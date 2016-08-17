@@ -13,6 +13,7 @@ Set:
 
 ```sh
 export POSTGRES_PASSWORD=PASSWORD
+export SECRET_KEY_BASE=SECRET_KEY_BASE
 ```
 
 Run:

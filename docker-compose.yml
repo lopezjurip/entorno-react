@@ -15,6 +15,7 @@ railsapi:
     - postgresql
   environment:
     - POSTGRES_PASSWORD
+    - SECRET_KEY_BASE
     - RAILS_ENV=production
     - VIRTUAL_HOST=railsapi.lopezjuri.com
 

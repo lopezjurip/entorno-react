@@ -31,8 +31,14 @@ export POSTGRES_PASSWORD=PASSWORD
 export SECRET_KEY_BASE=SECRET_KEY_BASE
 ```
 
-Run:
+Run services:
 
 ```sh
 docker-compose run -d
+```
+
+Remember to run the migrations with:
+
+```sh
+docker-compose run railsapi rails db:migrate
 ```

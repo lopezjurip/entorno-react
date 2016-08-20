@@ -2,7 +2,7 @@
 
 > Check the [Google Slides here](https://docs.google.com/presentation/d/1CsmFxio9uZcKmU1hSlbJyvL3PeOMQM3EfzrErPlF8Pg/edit?usp=sharing)
 
-![preview](./media/preview.png)
+[![preview](./media/preview.png)](https://docs.google.com/presentation/d/1CsmFxio9uZcKmU1hSlbJyvL3PeOMQM3EfzrErPlF8Pg/edit?usp=sharing)
 
 ## Project parts:
 

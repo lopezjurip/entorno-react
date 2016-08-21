@@ -1,34 +1,36 @@
-loadbalancer:
-  image: dockercloud/haproxy
-  volumes:
-    - /var/run/docker.sock:/var/run/docker.sock
-  ports:
-    - 80:80
-  links:
-    - webclient
-    - railsapi
+version: '2'
+services:
+  loadbalancer:
+    image: dockercloud/haproxy
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - 80:80
+    links:
+      - webclient
+      - railsapi
 
-railsapi:
-  build: entorno-react-api
-  restart: always
-  links:
-    - postgresql
-  environment:
-    - POSTGRES_PASSWORD
-    - SECRET_KEY_BASE
-    - RAILS_ENV=production
-    - VIRTUAL_HOST=railsapi.lopezjuri.com
+  postgresql:
+    image: postgres
+    environment:
+      - POSTGRES_USER=entorno-react-api
+      - POSTGRES_DB=entorno-react-api_production
+      - POSTGRES_PASSWORD
 
-webclient:
-  build: entorno-react-web
-  restart: always
-  environment:
-    - NODE_ENV=production
-    - VIRTUAL_HOST=entornoreact.lopezjuri.com
+  railsapi:
+    build: entorno-react-api
+    restart: always
+    depends_on:
+      - postgresql
+    environment:
+      - POSTGRES_PASSWORD
+      - SECRET_KEY_BASE
+      - RAILS_ENV=production
+      - VIRTUAL_HOST=railsapi.lopezjuri.com
 
-postgresql:
-  image: postgres
-  environment:
-    - POSTGRES_USER=entorno-react-api
-    - POSTGRES_DB=entorno-react-api_production
-    - POSTGRES_PASSWORD
+  webclient:
+    build: entorno-react-web
+    restart: always
+    environment:
+      - NODE_ENV=production
+      - VIRTUAL_HOST=entornoreact.lopezjuri.com

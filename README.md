@@ -40,7 +40,8 @@ docker-compose run -d
 Remember to run the migrations with:
 
 ```sh
-docker-compose run railsapi rails db:migrate
+docker-compose exec railsapi rails db:migrate
+docker-compose exec railsapi rails db:seed
 ```
 
 Scaling web client:
